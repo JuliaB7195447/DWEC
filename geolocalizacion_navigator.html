@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        navigator.geolocation.getCurrentPosition(gps);
+
+        function gps(posicion){
+            console.log(posicion.coords.latitude, posicion.coords.longitude);   //out: 39.9867904 -0.0557056
+        }
+
+    /*  console.log(posicion)
+    GeolocationPosition {coords: GeolocationCoordinates, timestamp: 1763116936089}
+    coords: 
+    GeolocationCoordinates
+    accuracy: 112805.56838727728
+    altitude:null
+    altitudeAccuracy: null
+    heading: null
+    latitude: 39.9867904
+    longitude: -0.0557056
+    speed: null
+    */
+
+    //esta genial combinarlo con leafletjs.com para mapas
+    </script>
+
+</body>
+</html>
