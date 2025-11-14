@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        //Uso del objeto localStorage para almacenar datos en el navegador
+        //hay tb sessionStorage() - dura mientras navegamos x la web
+
+        if(!localStorage.nombre){       //1º se comprueba se ha introducido anteriormente el nombre
+
+            let nombre = prompt("Dime tu nombre");      //if not, se pide el nombre
+            localStorage.nombre = nombre;
+        }
+        document.write("Hola " + localStorage.nombre)
+        ses
+/*
+en inspect -> application -> local Storage, se puede ver lo que tenemos guardado*/
+
+    </script>    
+</body>
+</html>
