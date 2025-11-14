@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>METODOS DE ARRAY</title>
+    <script>
+
+        let arr1 = ['carmen','juan','pedro','luis','ana','adolfo']; //array sencillo
+
+        let arr2 = [                            //array de objetos
+            {nombre:'manzanas',precio:'5'},
+            {nombre:'peras',precio:'8'},
+            {nombre:'sandia',precio:'4'},
+            {nombre:'aguacate',precio:'12'},
+            {nombre:'melon',precio:'9'},
+            {nombre:'platanos',precio:'7'}
+        ];
+        let resultado;
+
+
+        // find: Devuelve el primer elemento encontrado.  
+        //método find recibe parametro como una funcion que devuelve true o false
+
+        resultado = arr1.find(function(elemento){
+            return elemento=='carmen'});
+        console.log(resultado); //carmen
+        /*
+        resultado = arr1.find(elemento => elemento === 'carmen');
+        console.log(resultado);
+        */
+        
+        //busca el primer elemento que empiece por 'a' (indice 0-a)
+        resultado = arr1.find((elemento)=>elemento.charAt(0)=='a'); //es6 notación flecha
+        console.log(resultado) //ana
+
+        // filter: Devuelve el conjunto de elementos encontrados.
+
+        resultado = arr1.filter((elemento)=>elemento.charAt(0)=='a'); 
+        console.log(resultado) // ['ana','adolfo']
+
+        resultado = arr2.filter((elemento)=>elemento.precio<7);     //aqui apuntamos ya a la propiedad precio del OBJETO
+        console.log(resultado) // [{nombre:'manzanas',precio:'5'},{nombre:'sandia',precio:'4'}]
+
+         // map: Aplica la función ; 
+         // transforma cada elemento del array según la función dada y da nuevo resultado en array
+
+        resultado = arr1.map(elemento => elemento.length);
+        console.log(resultado); // [6,4,5,4,3,6]
+        
+        //Ejemplo con arr2 (extraer nombres y convertir precios a número):
+        
+        let nombres = arr2.map(p => p.nombre);
+        let productos = arr2.map(p => ({ nombre: p.nombre, precio: Number(p.precio) }));
+        let baratos = arr2.filter(p => Number(p.precio) < 7).map(p => p.nombre);
+
+        console.log(nombres); // ['manzanas','peras','sandia','aguacate','melon','platanos']
+        console.log(productos); // [{nombre:'manzanas',precio:5},...]
+        console.log(baratos); // ['manzanas','sandia']
+
+         // map: Aplica la función 
+
+        resultado = arr1.map((elemento)=>elemento.length>3);
+        console.log(resultado) //[true,true,true,true,false,true]
+
+        // sort: Sin parametros ordena un array por orden lexicográfico
+        console.log(arr1.sort());
+
+        // sort admite una función como parámetro que indique el orden
+
+        resultado = arr2.sort((a,b)=>{
+            return a.precio-b.precio
+        })
+        console.log(resultado);// Array ordenado por el precio
+
+        // every : true si todos los elementos del array cumplen la condición
+
+        resultado = arr2.every((e)=>{
+            return e.precio<10
+        })
+        console.log(resultado); //false
+        
+        
+        // some : true si al menos un elemento del array cumple
+
+        resultado = arr2.some((e)=>{
+            return e.precio<10
+        })
+        console.log(resultado); //true
+
+        //reduce: añadimos una variable que sirve de "acumulador" en los parametros de la función y pasamos el valor incial del acumulador
+
+        let sumatotal = arr2.reduce((acumulador, elemento)=> acumulador + Number(elemento.precio),0); //0 es el valor inicial del acumulador
+        console.log(sumatotal); //45
+
+        // (acumulador, elemento)=> acumulador + Number(elemento.precio) eso es una función; 0 es un parametro - valor inicial de acumulador(que es suma total)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
