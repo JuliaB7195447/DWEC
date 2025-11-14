@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRUEBA ARRAYS</title>
+    <script>
+        /*DECLARANDO ARRAY*/
+
+        let arr = new Array();
+        let arr2 = [];
+
+        // añadir elementos al final PUSH
+        arr.push(2);
+        arr.push(4);
+        arr.push(6);    
+        arr.push(8);
+
+        console.log(arr);
+
+        //quita el ULTIMO elemento POP
+        arr.pop();
+        console.log(arr);
+
+        //modificar valor de una posicion concreta
+        arr2[0] = 1;        //posicion 0 - es un atributo(indice); 1 es el valor
+        arr2[1] = 2;
+        arr2[2] = 3;
+
+        /*ROCORRER ARRAYS*/
+        
+        //FOR con la condicion LENGTH
+        document.write('<h2>Bucle for</h2>');
+        for(let i = 0; i < arr.length; i++){
+            console.log(`Iteración ${i}: ${arr[i]}`);
+            document.write(arr[i])  //escribe en la página el valor del array
+        }
+
+        //FOR OF: ITERA SOBRE LOS VALORES
+      
+        document.write('<h2>Bucle for of</h2>');
+        for(let valor of arr2){
+            console.log(valor);
+            document.write(valor)
+        }
+
+        //FOR IN: ITERA SOBRE LOS ATRIBUTOS(INDICES)  
+        // atributo/indice <-   arr[1] = 2    ->valor
+      
+        
+        document.write('<h2>Bucle for in</h2>');
+        for(let indice in arr){
+            console.log(`Índice ${indice}: ${arr[indice]}`);
+            document.write(arr[indice])
+        }
+
+        //FOREACH: es un metodo propio de los arrays
+        document.write('<h2>Bucle forEach</h2>');
+
+        arr.forEach((item) => document.write(item));
+        //  ^^^^^^^^  método del array
+        //          ^^^^^^ parámetro (cada valor)
+        //                  ^^^^^^^^^^^^^^^^^^^^^ función flecha (acción a hacer)
+
+        
+        //Eliminar/añadir elementos intermedios
+        //arr.splice(inicio[, num_elem_a_borrar, inserta_elem1, ..., inserta_elemN])
+
+        arr.splice(1,1) //Elimina la posición 1  arr=[2, 4, 6]
+        console.log(arr);// out [2,6]
+        arr.splice(1,0,4,5);//¿Que hace?; dsde la posicion 1 elimina 0 elementos y añade 4 y 5
+        console.log(arr)
+
+        //Extraer posicines desde inicio hasta fin (sin incluirlo)
+        //arr.slice(inicio[,fin])
+        arr.slice(1,2)
+
+        //Comprobar si está un elemento en el array
+        //includes: devuelve true o false si se encuentra
+        //indexOf: devuelve el índice en el que lo encuentra o -1
+        arr.includes(4)
+        arr.indexOf(4)
+
+        //split/join. Convierte cadena en array y viceversa.
+        arr=["a","b","c"]
+        let cad = arr.join()//"a,b,c" -> cadena
+        cad.split(",")//["a", "b", "c"]  -> array
+
+
+       
+        //Vamos a crear un array grande para comprobar el rendimiento
+        //de cada uno de los bucles.
+
+        //Creamos un array grande
+        for (let i=0;i<500000;i++) arr.push(i);
+
+        //Calculamos el tiempo en recorrerlo
+        let time1=new Date();
+        for ( let i=0 ; i<arr.length ; i++){
+          //  document.write(arr[i]+'<br>')  //peta navegador
+        }
+        let time2=new Date();
+
+        document.write('<br>Tiempo for: '+(time2-time1))
+
+        //Calculamos el tiempo en recorrerlo for in
+        time1=new Date();
+        for ( let i in arr){
+           // document.write(arr[i]+'<br>')
+        }
+        time2=new Date();
+
+        document.write('<br>Tiempo for in: '+(time2-time1))
+        
+        //Calculamos el tiempo en recorrerlo for of
+        time1=new Date();
+        for ( let i of arr){
+           // document.write(i+'<br>')
+        }
+        time2=new Date();
+
+        document.write('<br>Tiempo for of: '+(time2-time1))
+
+
+        </script>
+</head>
+<body>
+    
+</body>
+</html>
